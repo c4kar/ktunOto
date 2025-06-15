@@ -1,0 +1,10 @@
+# Ana
+selenium==4.25.0
+webdriver-manager==4.0.2
+python-dotenv==1.0.1
+
+# Gelecekte gerekebilir 
+requests==2.31.0               # API çağrıları için
+pillow==10.3.0                 # Görüntü işleme
+pyinstaller==6.7.0             # Executable oluşturmak için
+pytest==8.2.0                  # Testler için (development)
