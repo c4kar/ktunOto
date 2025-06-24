@@ -34,7 +34,7 @@
    ```bash
    curl -sL https://github.com/c4kar/ktunOto/blob/main/installer.py | python
 2. **.zip şeklinde indirip main.py dosyasını çalıştırabilirsin**
-	1. zip'ten çıkarttıktan sonra *Powershell* ile klasöre gelip aşağıdaki kod satırını yazmanız yeterli.	
+	1. zip'ten çıkarttıktan sonra **cmd** ile klasöre gelip aşağıdaki kod satırını yazmanız yeterli.	
 		```bash
   	 	pip install -r requirements.txt
 		```
