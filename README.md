@@ -32,7 +32,7 @@
 1. **installer.py ile doğrudan kurabilirsin (Tavsiye edilir)**:  
    ```bash
    curl -sL https://raw.githubusercontent.com/c4kar/ktunOto/main/installer.py | python
-2. **.zip şeklinde indirip main.py dosyasını çalıştırabilirsin**
+2. **.zip şeklinde indirip main.py dosyasını çalıştırabilirsin(Daha hızlı)**
 	1. zip'ten çıkarttıktan sonra komut satırı ile klasöre gelip aşağıdaki kodu yazmanız yeterli.	
 		```bash
   	 	pip install -r requirements.txt
