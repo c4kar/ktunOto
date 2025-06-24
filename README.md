@@ -30,9 +30,8 @@
 ## 💻 Nasıl Kullanbilirim?
 
 1. **installer.py ile doğrudan kurabilirsin (Tavsiye edilir)**:  
-
    ```bash
-   curl -sL https://github.com/c4kar/ktunOto/blob/main/installer.py | python
+   curl -sL https://raw.githubusercontent.com/c4kar/ktunOto/main/installer.py | python
 2. **.zip şeklinde indirip main.py dosyasını çalıştırabilirsin**
 	1. zip'ten çıkarttıktan sonra **cmd** ile klasöre gelip aşağıdaki kod satırını yazmanız yeterli.	
 		```bash
