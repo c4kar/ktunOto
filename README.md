@@ -39,3 +39,6 @@
   	 	pip install -r requirements.txt
 		```
 	2. main.py dosyasını çalıştır.
+
+## ⚠️ Notlar
+Programı ilk defa çalıştırdığınızda tarayıcı sürücüsünü indirdiğinden dolayı yavaş açılabilir. Sadece ilk çalıştırma için geçerlidir.
