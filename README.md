@@ -69,7 +69,11 @@ Eğer projeyi kaynak kodundan çalıştırmak veya geliştirmek isterseniz:
     ```bash
     pip install -r requirements.txt
     ```
-4.  **Uygulamayı Çalıştırın:**
+4. **Kart bilgilerini girin**
+   ```bash
+    python setup_cc.py 
+    ```
+5. **Uygulamayı Çalıştırın:**
     ```bash
     python main.py
     ```
@@ -80,7 +84,8 @@ Eğer projeyi kaynak kodundan çalıştırmak veya geliştirmek isterseniz:
 Projeyi daha iyi hale getirmek için tüm katkılara açığım! Lütfen bir "pull request" oluşturun veya "issue" açarak fikirlerinizi ve bulduğunuz hataları paylaşın.
 
 ## ☑️ Yapılacaklar
-- [x] Enkripte kart bilgileri saklama 
+- [x] Enkripte kart bilgileri saklama
+- [ ] "Onayla" tuşu stabilitesi
 - [ ] Günün yemeğini GUI'da inceleyebilme
 - [ ] istatik
 - [ ] WEB
