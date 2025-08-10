@@ -16,7 +16,7 @@
 **ktunOto**, Konya Teknik Üniversitesi (KTÜN) *Yemekhane Rezervasyon Sistemi* için geliştirilmiş, rezervasyon sürecini otomatikleştiren bir masaüstü uygulamasıdır. Üniversitenin yavaş ve kullanışsız web sitesiyle uğraşmak yerine, bu araç ile yemekhane rezervasyonlarınızı saniyeler içinde yapabilirsiniz.
 
 <div align="center">
-  <img width="70%" src="https://github.com/c4kar/ktunOto/blob/main/g%C3%B6rsel/ui.png?raw=true" title="ktunOto Arayüzü"/>
+  <img width="70%" src="görsel/ui.png" title="ktunOto Arayüzü"/>
 </div>
 
 ---
