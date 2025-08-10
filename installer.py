@@ -29,13 +29,20 @@ def build_exe():
     # İkon dosyasının, klonlanan repo içinde olduğunu varsayıyoruz.
     # pyinstaller çalıştırıldığında cwd zaten REPO_NAME içinde olacak.
     icon_path_for_pyinstaller = ICON_NAME
-    run(f"pyinstaller main.py --onefile --noconsole --name {EXE_NAME} --icon={icon_path_for_pyinstaller}")
-    print("✅ Derleme tamamlandı.")
+    
+    # Windows'ta ; Linux/macOS'ta : kullanılır. Platforma özel ayıraç.
+    separator = ';' if sys.platform == 'win32' else ':'
+    
+    # --add-data bayrağı ile varlıkları (görselleri) .exe'ye dahil et
+    data_flags = f'--add-data "{icon_path_for_pyinstaller}{separator}." --add-data "logo.png{separator}."'
+
+    run(f"pyinstaller main.py --onefile --noconsole --name {EXE_NAME} --icon={icon_path_for_pyinstaller} {data_flags}")
+    print("✅ Derleme tamamlandı.")")
 
 def move_exe_to_root():
     src = os.path.join("dist", EXE_NAME)
     # .exe'yi installer.py'nin olduğu dizine taşıyoruz.
-    # os.getcwd() burada installer.py'nin olduğu dizini değil, REPO_NAME dizinini gösterir.
+    # os.getcwd() burada installer.py'nin olduğu dizinini değil, REPO_NAME dizinini gösterir.
     # Bu yüzden bir üst dizine çıkmamız gerekiyor.
     dst = os.path.join(os.path.dirname(os.getcwd()), EXE_NAME)
     if os.path.exists(src):
@@ -76,11 +83,29 @@ oLink.Save
     os.remove(vbs_script_path)
     print("✅ Kısayol oluşturuldu.")
 
+def cleanup():
+    print("🧹 Geçici dosyalar temizleniyor...")
+    if os.path.exists("build"):
+        shutil.rmtree("build")
+    if os.path.exists("dist"):
+        shutil.rmtree("dist")
+    
+    spec_file = f"{EXE_NAME}.spec"
+    if os.path.exists(spec_file):
+        os.remove(spec_file)
+    print("✅ Temizlik tamamlandı.")
+
 def main():
     installer_script_dir = os.getcwd() # Başlangıç dizinini kaydet
     clone_repo()
     os.chdir(REPO_NAME) # Klonlanan repo dizinine geç
     
+    # Kullanıcının ayarlarını kaydedebilmesi için boş .env dosyası oluştur
+    if not os.path.exists(".env"):
+        print("📝 Boş .env dosyası oluşturuluyor...")
+        with open(".env", "w") as f:
+            pass # Dosyayı oluşturmak yeterli
+
     # İkon dosyasının varlığını kontrol et (isteğe bağlı ama iyi bir pratik)
     if not os.path.exists(ICON_NAME):
         print(f"⚠️  Uyarı: {ICON_NAME} dosyası {os.getcwd()} dizininde bulunamadı. .exe ikonsuz oluşturulacak.")
@@ -88,12 +113,14 @@ def main():
     install_deps()
     build_exe()
     move_exe_to_root() # Bu fonksiyon içinde cwd hala REPO_NAME
+    cleanup()
 
     # create_shortcut ve sonraki işlemler için ana dizine (installer.py'nin olduğu yere) dön
     os.chdir(installer_script_dir)
     
     create_shortcut()
     print(f"\n🚀 {EXE_NAME} çalıştırmaya hazır! Masaüstüne ikonlu kısayol oluşturuldu.")
+    print("\n⚠️ ÖNEMLİ: Programı ilk kez çalıştırdığınızda, bir sonraki adımda yapacağımız güncelleme ile, sizden kredi kartı bilgilerinizi girmeniz istenecek.")
 
 if __name__ == "__main__":
     if sys.platform != "win32":

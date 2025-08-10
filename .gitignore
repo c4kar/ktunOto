@@ -1,12 +1,34 @@
+# Python dosyaları
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
 
+# Derleme çıktıları
 build/
 dist/
 *.spec
 
+# Gizli dosyalar ve şifreler - ÇOK ÖNEMLİ - AMAN HA
+secret.key
+cc.dat
 .env
 
-*.lnk
-
+# Çalışma zamanında oluşturulan dosyalar
+captcha.png
+captcha.txt
+sms.txt
+sms_mode.flag
 *.log
+
+# İşletim sistemi tarafından oluşturulan dosyalar
+.DS_Store
+Thumbs.db
+
+# IDE / Editör özel dosyaları
+.vscode/
+.idea/
