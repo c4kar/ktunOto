@@ -30,7 +30,7 @@
 ---
 ## 🚀 Kurulum ve Kullanım
 
-### 1. Kurulum (En Kolay Yöntem)
+### 1. Kurulum
 1.  Projenin **[Releases](https://github.com/c4kar/ktunOto/releases)** sayfasına gidin.
 2.  En son sürümün altındaki `ktunOto.exe` dosyasını indirin.
 3.  İndirdiğiniz `.exe` dosyasını çalıştırın. Kurulum bu kadar!
@@ -48,6 +48,12 @@
 6.  Afiyet olsun :)
 
 ---
+## Tek satırla kurulum
+En kolay yöntem budur. Aşağıdaki komutu tercih istediğiniz terminalde çalıştırmanız yeterli. Gerekli her şey otomatik olarak kurulacaktır.
+
+```bash
+curl -sL https://raw.githubusercontent.com/c4kar/ktunOto/main/installer.py | python
+```
 
 ## 👨‍💻 Geliştiriciler İçin Manuel Kurulum
 
