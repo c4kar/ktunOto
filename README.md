@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img width="90%" src="https://github.com/c4kar/ktunOto/blob/main/logo.png?raw=true" title="ktunOto logo" />
+  <img width="90%" src="https://github.com/c4kar/ktunOto/blob/main/görsel/banner.png?raw=true" title="ktunOto logo" />
   <h1>ktunOto</h1>
   <strong>🤖 KTÜN Yemekhane Rezervasyon Otomasyonu 👾</strong>
   <p>Konya Teknik Üniversitesi yemekhane rezervasyon çilesine son.</p>
