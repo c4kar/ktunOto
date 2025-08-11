@@ -37,7 +37,7 @@ def build_exe():
     data_flags = f'--add-data "{icon_path_for_pyinstaller}{separator}." --add-data "logo.png{separator}."'
 
     run(f"pyinstaller main.py --onefile --noconsole --name {EXE_NAME} --icon={icon_path_for_pyinstaller} {data_flags}")
-    print("✅ Derleme tamamlandı.")")
+    print("✅ Derleme tamamlandı.")
 
 def move_exe_to_root():
     src = os.path.join("dist", EXE_NAME)
