@@ -33,7 +33,7 @@
 ### 1. Kurulum
 1.  Projenin **[Releases](https://github.com/c4kar/ktunOto/releases)** sayfasına gidin.
 2.  En son sürümün altındaki `ktunOto.exe` dosyasını indirin.
-3.  İndirdiğiniz `.exe` dosyasını çalıştırın. Kurulum bu kadar!
+3.  İndirdiğiniz `.exe` dosyasını çalıştırın. Kurulum bu kadar!([setup_cc.py](https://raw.githubusercontent.com/c4kar/ktunOto/refs/heads/main/setup_cc.py) dosyasını çalıştırmayı unutmayın)
 
 ### 2. İlk Ayarlar
 - **Kart Bilgileri:** Programı ilk kez çalıştırdığınızda, sizden kart bilgilerinizi girmenizi isteyecektir. Bu bilgiler, gelecekteki rezervasyonlarda ödeme formunu otomatik doldurmak için **bilgisayarınızda şifrelenerek** saklanır.
@@ -48,11 +48,13 @@
 6.  Afiyet olsun :)
 
 ---
-## Tek satırla kurulum
-En kolay yöntem budur. Aşağıdaki komutu tercih istediğiniz terminalde çalıştırmanız yeterli. Gerekli her şey otomatik olarak kurulacaktır.
+## Tavsiye edilen kurulum
+En kolay yöntem budur. Aşağıdaki komutu terminalde çalıştırmanız yeterli. Gerekli her şey otomatik olarak kurulacaktır.
 
 ```bash
-curl -sL https://raw.githubusercontent.com/c4kar/ktunOto/main/installer.py | python
+git clone https://github.com/c4kar/ktunOto
+cd ktunOto
+py installer.py 
 ```
 
 ## 👨‍💻 Geliştiriciler İçin Manuel Kurulum
