@@ -30,9 +30,6 @@ def build_exe():
     run(f"pyinstaller main.py --onefile --windowed --name {EXE_NAME} --icon={icon_path_for_pyinstaller}")
     print("✅ Derleme tamamlandı.")
     
-    else:
-        print("❌ .exe bulunamadı!")
-
 def create_shortcut():
     print("📌 Masaüstüne kısayol oluşturuluyor...")
     desktop = os.path.join(os.path.expanduser("~"), "Desktop")
