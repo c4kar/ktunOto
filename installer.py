@@ -23,13 +23,24 @@ def build_exe():
     
     # Windows'ta ; Linux/macOS'ta : kullanılır. Platforma özel ayıraç.
     separator = ';' if sys.platform == 'win32' else ':'
-    
-    # görev çubuğunda ikonun görünmesi için gerekli bayraklar
+      
+    # Windows görev çubuğunda ikonun görünmesi için gerekli bayraklar
     # --windowed bayrağı konsol penceresini gizler (--noconsole ile aynı)
     # --icon bayrağı uygulamanın ikonunu belirler
     run(f"pyinstaller main.py --onefile --windowed --name {EXE_NAME} --icon={icon_path_for_pyinstaller}")
     print("✅ Derleme tamamlandı.")
-    
+
+def move_exe_to_root():
+    src = os.path.join("dist", EXE_NAME)
+    # .exe'yi installer.py'nin olduğu dizine taşıyoruz.
+    dst = os.path.join(os.getcwd(), EXE_NAME)
+    if os.path.exists(src):
+        shutil.move(src, dst)
+        print(f"📦 {EXE_NAME} ana dizine taşındı.")
+
+    else:
+        print("❌ .exe bulunamadı!")
+
 def create_shortcut():
     print("📌 Masaüstüne kısayol oluşturuluyor...")
     desktop = os.path.join(os.path.expanduser("~"), "Desktop")
@@ -87,6 +98,7 @@ def main():
 
     install_deps()
     build_exe()
+    move_exe_to_root()
     cleanup()
     
     create_shortcut()
