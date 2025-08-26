@@ -54,7 +54,7 @@ En kolay yöntem budur. Aşağıdaki komutu terminalde çalıştırmanız yeterl
 ```bash
 git clone https://github.com/c4kar/ktunOto
 cd ktunOto
-py installer.py 
+python installer.py 
 ```
 
 ## 👨‍💻 Geliştiriciler İçin Manuel Kurulum
