@@ -20,15 +20,14 @@ def decrypt_credentials():
         decrypted_data = f.decrypt(encrypted_data).decode()
         
         parts = decrypted_data.split('|')
-        if len(parts) != 5:
+        if len(parts) != 4:
             raise CredentialsError("Şifrelenmiş veri dosyası bozuk veya geçersiz.")
             
         return {
             'card_number': parts[0],
-            'card_holder': parts[1],
-            'exp_month': parts[2],
-            'exp_year': parts[3],
-            'cvv': parts[4]
+            'exp_month': parts[1],
+            'exp_year': parts[2],
+            'cvv': parts[3]
         }
     except FileNotFoundError:
         raise CredentialsError("Kredi kartı bilgileri (cc.dat) veya anahtar (secret.key) bulunamadı.\nLütfen önce 'setup_cc.py' betiğini çalıştırın.")
