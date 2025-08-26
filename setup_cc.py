@@ -29,7 +29,7 @@ def save_credentials(card_details: dict):
     Also generates a key if it doesn't exist.
     
     Args:
-        card_details (dict): A dictionary containing 'card_number', 'card_holder',
+        card_details (dict): A dictionary containing 'card_number',
                              'exp_month', 'exp_year', and 'cvv'.
     
     Returns:
@@ -43,7 +43,6 @@ def save_credentials(card_details: dict):
         # Verileri birleştirme
         credentials_str = (
             f"{card_details['card_number']}|"
-            f"{card_details['card_holder']}|"
             f"{card_details['exp_month']}|"
             f"{card_details['exp_year']}|"
             f"{card_details['cvv']}"
@@ -73,8 +72,6 @@ def get_credentials_from_user():
             break
         else:
             print("❌ Geçersiz kart numarası. Lütfen 15-16 haneli ve sadece rakamlardan oluşan bir numara girin.")
-
-    card_holder = input("👤 Kart Üzerindeki İsim (Ad SOYAD şeklinde, kartta yazdığı gibi): ").strip().upper()
 
     while True:
         exp_month = input("📅 Son Kullanma Ay (MM, örn: 01, 09): ").strip()
@@ -112,7 +109,6 @@ def get_credentials_from_user():
 
     return {
         "card_number": card_number,
-        "card_holder": card_holder,
         "exp_month": exp_month,
         "exp_year": exp_year,
         "cvv": cvv
