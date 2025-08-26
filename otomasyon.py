@@ -116,9 +116,9 @@ def otomasyonu_baslat(uniemail, unisifre, alinacak_gunler_listesi,stop_flag):
                 print(f"  ❌ {gun_str}. gün için rezervasyon sırasında hata: {str(e_date)}")
                 
         # "Onayla" butonuna tıkla (JavaScript click ile daha sağlam)
-        onayla_button_xpath = "//button[@name='Odeme' and @value='KrediKarti' and normalize-space(text())='Onayla']"
+        onayla_button_css = ".form-group > .button_utarit_yellow"
         try:
-            onayla_button = wait.until(EC.element_to_be_clickable((By.XPATH, onayla_button_xpath)))
+            onayla_button = wait.until(EC.element_to_be_clickable((By.XPATH, onayla_button_css)))
             driver.execute_script("arguments[0].scrollIntoView(true);", onayla_button)
             time.sleep(0.5) # Scroll sonrası sayfanın oturması için kısa bekleme
             driver.execute_script("arguments[0].click();", onayla_button)
