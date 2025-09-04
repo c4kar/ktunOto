@@ -93,7 +93,7 @@ Projeyi daha iyi hale getirmek için tüm katkılara açığım! Lütfen bir "pu
 
 ## ☑️ Yapılacaklar
 - [x] Enkripte kart bilgileri saklama
-- [ ] "Onayla" tuşu stabilitesi
+- [x] "Onayla" tuşu stabilitesi
 - [ ] Günün yemeğini GUI'da inceleyebilme
 - [ ] istatik
 - [ ] WEB
