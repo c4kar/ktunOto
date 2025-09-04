@@ -1,4 +1,4 @@
-#Bu kısımda Gemini'dan çok yardım aldım. google'dan nefret ederim ama Allah razı olsun
+#Bu kısımda Gemini'dan çok yardım aldım. Google'ı sevmem ama Gemini <3
 import tkinter as tk
 from tkinter import ttk, messagebox
 import threading
@@ -6,8 +6,7 @@ from datetime import datetime, timedelta
 from dotenv import load_dotenv
 import os
 from PIL import Image, ImageTk
-# Otomasyon modülünden özel hata sınıfını ve fonksiyonu import et
-from otomasyon import otomasyonu_baslat, CredentialsError
+from otomasyon import otomasyonu_baslat
 
 # Everforest tarzı
 COLORS = {
@@ -23,7 +22,11 @@ COLORS = {
     'error_active': '#B05C4C',   
     'border': '#A0A8A0'   
 }
-
+try:
+    from ctypes import windll
+    windll.shcore.SetProcessDpiAwareness(1)
+except:
+    pass
 class YemekhaneGUI:
     def __init__(self):
         self.root = tk.Tk()
@@ -49,7 +52,7 @@ class YemekhaneGUI:
 
     def setup_window(self): 
         self.root.title("ktunOto")
-        self.root.geometry("340x700")
+        self.root.geometry("340x780")
         self.root.configure(bg=COLORS['background'])
         self.root.resizable(False, False)
         self.root.overrideredirect(True)
@@ -78,11 +81,11 @@ class YemekhaneGUI:
         self.code_entry.bind("<Return>", self.save_code)
 
         self.image_label = tk.Label(main_frame, bg=COLORS['background'])
-        self.image_label.pack(padx=10, fill='y')
+        self.image_label.pack(padx=10)
                 
     def create_header(self, parent):
         header_frame = tk.Frame(parent, bg=COLORS['background'])
-        header_frame.pack(fill='x', pady=(0, 15))
+        header_frame.pack(fill='x', pady=(0, 25))
         tk.Label(header_frame, text="ktunOto", font=('System', 20, 'normal'), fg=COLORS['text_primary'], bg=COLORS['background']).pack()
         tk.Label(header_frame, text="KTÜN Yemekhane Rezervasyon Otomasyonu", font=('System', 12), fg=COLORS['text_secondary'], bg=COLORS['background']).pack(pady=(3, 0))
         
@@ -245,7 +248,6 @@ class YemekhaneGUI:
         # --- Giriş Alanları ---
         fields = {
             "card_number": ("💳 Kart Numarası", None),
-            "card_holder": ("👤 Kart Üzerindeki İsim", None),
             "exp_month": ("📅 Ay (MM)", None),
             "exp_year": ("📅 Yıl (YYYY)", None),
             "cvv": ("🔒 CVV", "*")

@@ -48,6 +48,7 @@ def otomasyonu_baslat(uniemail, unisifre, alinacak_gunler_listesi,stop_flag):
     cc_info = decrypt_credentials()
     chrome_options = Options()
     chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--window-size=1920,1080")
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
     wait = WebDriverWait(driver, 20)
 
@@ -142,21 +143,21 @@ def otomasyonu_baslat(uniemail, unisifre, alinacak_gunler_listesi,stop_flag):
 
             # 2. Formu doldur
             print(" Kredi kartı bilgileri dolduruluyor...")
-            card_number_field = wait.until(EC.presence_of_element_located((By.ID, 'pan')))
+            card_number_field = wait.until(EC.visibility_of_element_located((By.ID, 'pan')))
             card_number_field.send_keys(cc_info['card_number'])
             print("  -> Kart numarası girildi.")
             
-            Select(driver.find_element(By.ID, 'selectMonth')).select_by_value(cc_info['exp_month'])
+            Select(wait.until(EC.element_to_be_clickable((By.ID, 'selectMonth')))).select_by_value(cc_info['exp_month'])
             print("  -> Ay seçildi.")
 
-            Select(driver.find_element(By.ID, 'selectYear')).select_by_value(cc_info['exp_year'])
+            Select(wait.until(EC.element_to_be_clickable((By.ID, 'selectYear')))).select_by_value(cc_info['exp_year'])
             print("  -> Yıl seçildi.")
 
-            driver.find_element(By.ID, 'cv2').send_keys(cc_info['cvv'])
+            wait.until(EC.visibility_of_element_located((By.ID, 'cv2'))).send_keys(cc_info['cvv'])
             print("  -> CVV girildi.")
             
             # 3. Ödeme butonuna tıkla
-            driver.find_element(By.ID, 'btnSbmt').click()
+            wait.until(EC.element_to_be_clickable((By.ID, 'btnSbmt'))).click()
             print("✅ Ödeme bilgileri gönderildi. 3D Secure onayı bekleniyor...")
 
             # 4. Ana sayfaya geri dön (3D Secure sayfası genellikle ana sayfadadır)
@@ -200,7 +201,7 @@ def otomasyonu_baslat(uniemail, unisifre, alinacak_gunler_listesi,stop_flag):
             possible_otp_ids = ['otpCode', 'code', 'smsCode', 'authCode']
             for an_id in possible_otp_ids:
                 try:
-                    otp_input_field = wait.until(EC.presence_of_element_located((By.ID, an_id)))
+                    otp_input_field = wait.until(EC.visibility_of_element_located((By.ID, an_id)))
                     print(f"  -> SMS giriş alanı bulundu (ID: {an_id}).")
                     break 
                 except:
@@ -214,12 +215,12 @@ def otomasyonu_baslat(uniemail, unisifre, alinacak_gunler_listesi,stop_flag):
             # Onay butonuna tıkla. Yaygın ID/metinler deneniyor.
             commit_button = None
             possible_buttons = [
-                (By.ID, 'btn-commit'),
-                (By.ID, 'submit'),
-                (By.XPATH, "//button[contains(text(), 'Onayla')]"),
-                (By.XPATH, "//button[contains(text(), 'Submit')]"),
-                (By.XPATH, "//button[contains(text(), 'Gönder')]")
+                (By.CSS_SELECTOR, '.button_utarit_yellow'),
+                (By.XPATH, "//button[contains(.,'Onayla')]"),
+                (By.XPATH, "//button[@name='Odeme']")
             ]
+            
+            print("🔍 DEBUG: Searching for commit buttons...")
             for by, val in possible_buttons:
                 try:
                     commit_button = wait.until(EC.element_to_be_clickable((by, val)))
@@ -264,4 +265,3 @@ def otomasyonu_baslat(uniemail, unisifre, alinacak_gunler_listesi,stop_flag):
         if os.path.exists('captcha.txt'): os.remove('captcha.txt')
         if os.path.exists('sms_mode.flag'): os.remove('sms_mode.flag')
         if os.path.exists('sms.txt'): os.remove('sms.txt')
-    

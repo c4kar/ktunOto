@@ -46,17 +46,18 @@ def create_shortcut():
     desktop = os.path.join(os.path.expanduser("~"), "Desktop")
     shortcut_path = os.path.join(desktop, f"{REPO_NAME}.lnk")
     
-    # Kısayolun hedefi olan .exe dosyasının tam yolu
-    # move_exe_to_root sonrasında .exe, installer.py'nin olduğu dizinde olacak.
     exe_full_path = os.path.join(os.getcwd(), EXE_NAME)
+    icon_full_path = os.path.join(os.getcwd(), ICON_NAME)
 
+    # Windows 11'de doğrudan .ico dosyasına işaret etmek daha güvenilir olabiliyor.
+    icon_path_for_vbs = icon_full_path if os.path.exists(icon_full_path) else f"{exe_full_path}, 0"
 
     vbs = f'''
     Set oWS = WScript.CreateObject("WScript.Shell")
     sLinkFile = "{shortcut_path}"
     Set oLink = oWS.CreateShortcut(sLinkFile)
     oLink.TargetPath = "{exe_full_path}"
-    oLink.IconLocation = "{exe_full_path}, 0" ' .exe içindeki ilk ikonu kullan
+    oLink.IconLocation = "{icon_path_for_vbs}"
     oLink.WindowStyle = 1
     oLink.WorkingDirectory = "{os.path.dirname(exe_full_path)}" ' Çalışma dizinini exe'nin bulunduğu dizin olarak ayarla
     oLink.Description = "KTÜN Yemekhane Otomasyon"
